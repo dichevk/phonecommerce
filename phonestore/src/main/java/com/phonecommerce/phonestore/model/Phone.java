@@ -17,9 +17,6 @@ public class Phone {
     private String brand;
     private double price;
 
-    public Phone() {
-    }
-
     public Phone(String name, String brand, double price) {
         this.name = name;
         this.brand = brand;
