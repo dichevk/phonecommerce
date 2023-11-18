@@ -1,1 +1,1 @@
-Backend for Phone Store implemented in Spring Java with Swagger API and MVC/Repository pattern
+Backend for Phone Store Ecommerce Java Web Application implemented using Spring with Swagger API and MVC/Repository pattern
