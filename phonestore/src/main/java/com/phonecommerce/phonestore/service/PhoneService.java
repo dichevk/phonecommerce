@@ -41,6 +41,7 @@ public class PhoneService {
         phoneRepository.deleteById(id);
     }
 
+
     private PhoneDTO convertToDTO(Phone phone) {
         PhoneDTO phoneDTO = new PhoneDTO();
         BeanUtils.copyProperties(phone, phoneDTO);
@@ -51,5 +52,28 @@ public class PhoneService {
         Phone phone = new Phone(phoneDTO.getName(),phoneDTO.getBrand(),phoneDTO.getPrice());
         BeanUtils.copyProperties(phoneDTO, phone);
         return phone;
+    }
+    public PhoneDTO updatePhone(Long id, PhoneDTO phoneDTO) {
+        Optional<Phone> optionalPhone = phoneRepository.findById(id);
+        
+        if (optionalPhone.isPresent()) {
+            Phone existingPhone = optionalPhone.get();
+            // Update the fields with non-null values from the DTO
+            if (phoneDTO.getName() != null) {
+                existingPhone.setName(phoneDTO.getName());
+            }
+            if (phoneDTO.getBrand() != null) {
+                existingPhone.setBrand(phoneDTO.getBrand());
+            }
+            if (phoneDTO.getPrice() != 0) {
+                existingPhone.setPrice(phoneDTO.getPrice());
+            }
+            
+            // Save the updated phone using the repository
+            Phone updatedPhone = phoneRepository.save(existingPhone);
+            return convertToDTO(updatedPhone);
+        } else {
+            return null;
+        }
     }
 }
