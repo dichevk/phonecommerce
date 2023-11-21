@@ -7,4 +7,5 @@ public class ManufacturerDTO {
     private Long id;
     private String name;
     private String country;
+    private Long commerceChamberId;
 }
