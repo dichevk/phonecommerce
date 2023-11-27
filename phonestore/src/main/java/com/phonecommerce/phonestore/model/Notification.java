@@ -21,4 +21,11 @@ public class Notification {
     @ManyToOne
     private User user; // The user to whom the notification is sent
     
+    public Notification(){}
+    public Notification (String message, Date timestamp, User user){
+        this.message = message;
+        this.timestamp = timestamp;
+        this.user = user;
+    }
+
 }
