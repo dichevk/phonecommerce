@@ -15,11 +15,20 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String comment;
-    private int rating;
+
+
+    private double rating;
 
     @ManyToOne
     private User user; // The user who wrote the review
 
     @ManyToOne
     private Phone phone; // The phone being reviewed
+
+    public Review(String comment, double rating, User user, Phone phone) {
+        this.comment = comment;
+        this.rating = rating;
+        this.user = user;
+        this.phone = phone;
+    }
 }
