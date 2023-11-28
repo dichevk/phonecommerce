@@ -3,6 +3,8 @@ package com.phonecommerce.phonestore.service;
 import com.phonecommerce.phonestore.dto.ReviewDTO;
 import com.phonecommerce.phonestore.model.Review;
 import com.phonecommerce.phonestore.repository.ReviewRepository;
+import com.phonecommerce.phonestore.repository.UserRepository;
+import com.phonecommerce.phonestore.repository.PhoneRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +16,14 @@ import java.util.stream.Collectors;
 public class ReviewService {
 
     private final ReviewRepository reviewRepository;
+    private final UserRepository userRepository;
+    private final PhoneRepository phoneRepository;
 
-    public ReviewService(ReviewRepository reviewRepository) {
+
+    public ReviewService(ReviewRepository reviewRepository, UserRepository userRepository, PhoneRepository phoneRepository) {
         this.reviewRepository = reviewRepository;
+        this.userRepository = userRepository;
+        this.phoneRepository = phoneRepository;
     }
 
     public List<ReviewDTO> getAllReviews() {
@@ -68,7 +75,7 @@ public class ReviewService {
     }
 
     private Review convertToEntity(ReviewDTO reviewDTO) {
-        Review review = new Review();
+        Review review = new Review(reviewDTO.getComment(),reviewDTO.getRating(), userRepository.findById(reviewDTO.getUserId()).get(), phoneRepository.findById(reviewDTO.getPhoneId()).get());
         BeanUtils.copyProperties(reviewDTO, review);
         return review;
     }
