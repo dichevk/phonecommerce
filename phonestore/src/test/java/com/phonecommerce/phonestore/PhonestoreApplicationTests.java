@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class PhonestoreApplicationTests {
 
 	@Test
-	void contextLoads() {
-	}
+	void contextLoads()  {
+	}// This test simply ensures that the Spring context can be loaded successfully.
 
 }
