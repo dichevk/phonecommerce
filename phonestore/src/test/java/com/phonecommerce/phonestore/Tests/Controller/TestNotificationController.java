@@ -74,4 +74,46 @@ class NotificationControllerTest {
         // Assert
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
+    @Test
+    void createNotification_ValidNotification_ReturnsCreated() {
+        // Arrange
+        NotificationDTO notificationDTO = new NotificationDTO(); // Initialize with valid notification data
+        when(notificationService.createNotification(any(NotificationDTO.class))).thenReturn(notificationDTO);
+
+        // Act
+        ResponseEntity<NotificationDTO> response = notificationController.createNotification(notificationDTO);
+
+        // Assert
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(notificationDTO, response.getBody());
+    }
+
+    @Test
+    void updateNotification_ExistingIdAndValidNotification_ReturnsUpdatedNotification() {
+        // Arrange
+        long notificationId = 1L;
+        NotificationDTO updatedNotificationDTO = new NotificationDTO(); // Initialize with updated notification data
+        when(notificationService.updateNotification(anyLong(), any(NotificationDTO.class))).thenReturn(updatedNotificationDTO);
+
+        // Act
+        ResponseEntity<NotificationDTO> response = notificationController.updateNotification(notificationId, updatedNotificationDTO);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(updatedNotificationDTO, response.getBody());
+    }
+
+    @Test
+    void updateNotification_NonExistingId_ReturnsNotFound() {
+        // Arrange
+        long nonExistingId = 100L;
+        NotificationDTO updatedNotificationDTO = new NotificationDTO(); // Initialize with updated notification data
+        when(notificationService.updateNotification(anyLong(), any(NotificationDTO.class))).thenReturn(null);
+
+        // Act
+        ResponseEntity<NotificationDTO> response = notificationController.updateNotification(nonExistingId, updatedNotificationDTO);
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
 }
