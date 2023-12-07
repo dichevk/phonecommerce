@@ -9,6 +9,7 @@ Search for "Swagger Viewer" in the Extensions Marketplace and install it.
 2. Open Swagger File:
 
 Open the Swagger (OpenAPI) file in Visual Studio Code.
+
 3. Launch Swagger Viewer:
 
 Right-click on the opened Swagger file.
