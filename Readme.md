@@ -2,15 +2,14 @@ Backend for Phone Store Ecommerce Java Web Application implemented using Spring 
 
 running Swagger from vscode: 
 
-Install the Extension:
-
-Open Visual Studio Code.
+How to Install the Swagger Extension:
+1. Open Visual Studio Code.
 Go to the Extensions view by clicking on the square icon on the sidebar (or use the shortcut Ctrl+Shift+X).
 Search for "Swagger Viewer" in the Extensions Marketplace and install it.
-Open Swagger File:
+2. Open Swagger File:
 
 Open the Swagger (OpenAPI) file in Visual Studio Code.
-Launch Swagger Viewer:
+3. Launch Swagger Viewer:
 
 Right-click on the opened Swagger file.
 From the context menu, select "Open with Swagger Viewer" or use the command palette (Ctrl+Shift+P) and type "Swagger Viewer: Show Preview".
